@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 98%;
+    --foreground: 220 45% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 45% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 45% 12%;
+    --primary: 218 65% 20%;
+    --primary-foreground: 40 50% 96%;
+    --secondary: 42 55% 55%;
+    --secondary-foreground: 220 45% 12%;
+    --muted: 220 20% 95%;
+    --muted-foreground: 220 15% 40%;
+    --accent: 42 70% 92%;
+    --accent-foreground: 218 65% 20%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 42 55% 55%;
+    --radius: 0.5rem;
+  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+  [data-hydration-error] { display: none !important; }
+}
+
+.gold-underline {
+  background-image: linear-gradient(90deg, hsl(42 55% 55%), hsl(42 55% 55%));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 40% 3px;
+}

@@ -1,0 +1,17 @@
+export const CBSE_LINKS: { label: string; url: string }[] = [
+  { label: 'Extension of Affiliation', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_7e1fee4cce9f440c8a76b2ef8efdd9ac.pdf' },
+  { label: 'School Trust Copy', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_6ec4465405c545baabad34b93825637a.pdf' },
+  { label: 'NOC', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_22b9a7d14b384b539384351afa86b422.pdf' },
+  { label: 'Recognition Certificate', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_2d20a3fb593f4e529d84fa737488ce28.pdf' },
+  { label: 'Building Safety Certificate', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_a40578ec14e347468c820a7d36c26ee4.pdf' },
+  { label: 'Fire Safety Certificate', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_0385d91819b544adb6469c234a0c2124.pdf' },
+  { label: 'Water, Health and Sanitation Certificate', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_01e87d26ae0b4cba9fa9f5328f15d0ee.pdf' },
+  { label: 'Self Certification by the school for affiliation', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_a066b49711dd420c9be5748b3ccbe626.pdf' },
+  { label: 'Academic Calendar', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_5ca699e3aaa84e7cb644c8db9883df55.pdf' },
+  { label: 'School Fee', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_942d371a37a5411ba68060b31765cd43.pdf' },
+  { label: 'SMC', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_b91fff52f5954438be0d96834ca474d2.pdf' },
+  { label: 'PTA', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_5f8245acb5bb41c8a59ed6f432db4fc3.pdf' },
+  { label: 'Last Three Year Result', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_6c8b77a2ff3b44eea74304e0c6a121b0.pdf' },
+  { label: 'Mandatory Disclosure List', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_c54592e04e7149118eb26d2b650789a4.pdf' },
+  { label: 'Staff Details', url: 'https://www.paulinternationalschool.edu.in/_files/ugd/1b4cc5_f752b66f8c574cd6bb641b7da26bfddb.pdf' },
+];
