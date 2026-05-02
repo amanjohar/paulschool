@@ -1,10 +1,12 @@
 import { PageHero } from '@/components/page-hero';
-import { prisma } from '@/lib/db';
 
-export const dynamic = 'force-dynamic';
+const images = [
+  { id: 1, url: 'https://example.com/image1.jpg', caption: 'School event', album: 'Events' },
+  { id: 2, url: 'https://example.com/image2.jpg', caption: 'Classroom', album: 'Campus' },
+  // Add more images as needed
+];
 
-export default async function GalleryPage() {
-  const images = await prisma.galleryImage.findMany({ orderBy: { ord: 'asc' } });
+export default function GalleryPage() {
   const albums = Array.from(new Set(images.map((i) => i.album)));
   return (
     <>

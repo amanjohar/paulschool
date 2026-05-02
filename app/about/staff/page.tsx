@@ -1,12 +1,16 @@
 import { PageHero } from '@/components/page-hero';
-import { prisma } from '@/lib/db';
 import { GraduationCap } from 'lucide-react';
-
-export const dynamic = 'force-dynamic';
 
 function initials(name: string) {
   return name.split(/\s+/).map((p) => p[0]).filter(Boolean).slice(0, 2).join('').toUpperCase();
 }
+
+type StaffMember = {
+  id: number;
+  name: string;
+  designation: string;
+  qualification: string;
+};
 
 function colorFor(designation: string) {
   const d = designation?.toUpperCase?.() ?? '';
@@ -17,14 +21,19 @@ function colorFor(designation: string) {
   return 'bg-muted text-primary';
 }
 
-export default async function StaffPage() {
-  const staff = await prisma.staff.findMany({ orderBy: { sno: 'asc' } });
+const staff: StaffMember[] = [
+  { id: 1, name: 'John Doe', designation: 'Principal', qualification: 'M.Ed' },
+  { id: 2, name: 'Jane Smith', designation: 'PGT English', qualification: 'M.A. English' },
+  // Add more staff as needed
+];
+
+export default function StaffPage() {
   return (
     <>
       <PageHero title="Our Staff" subtitle="Meet the dedicated team of educators shaping young minds at Paul International School." />
       <section className="max-w-[1200px] mx-auto px-4 py-16">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {staff.map((s) => (
+          {staff.map((s: StaffMember) => (
             <div key={s.id} className="bg-card rounded-lg p-5 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
               <div className={`w-14 h-14 rounded-full flex items-center justify-center font-display font-bold ${colorFor(s.designation)}`}>{initials(s.name)}</div>
               <p className="font-display font-semibold text-primary mt-3 leading-tight">{s.name}</p>

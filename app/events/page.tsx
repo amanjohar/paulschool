@@ -1,11 +1,13 @@
 import { PageHero } from '@/components/page-hero';
-import { prisma } from '@/lib/db';
 import { Calendar, Clock, Tag } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
+const events = [
+  { id: 1, title: 'Annual Sports Day', date: '2024-05-15', category: 'Sports', description: 'Join us for a day of fun and competition.' },
+  { id: 2, title: 'Science Fair', date: '2024-06-20', category: 'Academic', description: 'Showcase of student projects and innovations.' },
+  // Add more events as needed
+];
 
-export default async function EventsPage() {
-  const events = await prisma.event.findMany({ orderBy: { date: 'asc' } });
+export default function EventsPage() {
   return (
     <>
       <PageHero title="School Events" subtitle="From cultural celebrations to academic milestones — stay updated with everything happening at Paul International School." image="https://i.ytimg.com/vi/WvgehH5hkYA/hq720.jpg" />
