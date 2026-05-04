@@ -48,12 +48,16 @@
       <div class="statItem"><div class="num">100<span>%</span></div><div class="lbl">Student Participation</div></div>
     </div>
 
-    <div class="filters">
-      <button class="filterBtn active" onclick="filterEvents('all',this)">All Events</button>
-      <button class="filterBtn" onclick="filterEvents('academic',this)">Academic</button>
-      <button class="filterBtn" onclick="filterEvents('cultural',this)">Cultural</button>
-      <button class="filterBtn" onclick="filterEvents('sports',this)">Sports</button>
-      <button class="filterBtn" onclick="filterEvents('general',this)">General</button>
+    <div class="filterBar">
+      <button class="filterBtn active" onclick="setFilter('all', this)">All</button>
+      <button class="filterBtn" onclick="setFilter('academic', this)">Academic</button>
+      <button class="filterBtn" onclick="setFilter('cultural', this)">Cultural</button>
+      <button class="filterBtn" onclick="setFilter('sports', this)">Sports</button>
+      <button class="filterBtn" onclick="setFilter('holiday', this)">Holiday</button>
+      <button class="filterBtn" onclick="setFilter('general', this)">General</button>
+      <button id="togglePastBtn" class="filterBtn" 
+          style="margin-left:auto;background:#fee2e2;color:#dc2626;border-color:#fca5a5;"
+          onclick="togglePast()">🕐 Show Last Past Event</button>
     </div>
 
     <div class="eventsGrid" id="eventsGrid">  
@@ -91,73 +95,106 @@
     cultural:  { accent: 'acc-cultural', tag: 'cat-cultural',  label: 'Cultural'  },
     sports:    { accent: 'acc-sports',   tag: 'cat-sports',    label: 'Sports'    },
     general:   { accent: 'acc-general',  tag: 'cat-general',   label: 'General'   },
+    holiday:   { accent: 'acc-holiday',  tag: 'cat-holiday',   label: 'Holiday'   },
   };
+
+  let activeFilter = 'all';
+  let showPast     = false;   // hidden by default
 
   function parseEvents(text) {
     return text.trim().split('\n')
       .filter(line => line.trim() && !line.startsWith('#'))
       .map(line => {
         const [dateStr, cat, title, desc] = line.split('|').map(s => s.trim());
-        const date = new Date(dateStr);
-        return { date, cat: cat.toLowerCase(), title, desc };
+        return { date: new Date(dateStr), cat: cat.toLowerCase(), title, desc };
       })
       .sort((a, b) => a.date - b.date);
   }
 
-  function buildCard(ev) {
-    const meta      = CAT_META[ev.cat] || CAT_META.general;
-    const isUpcoming = ev.date >= TODAY;
-    const day       = ev.date.getDate().toString().padStart(2,'0');
-    const mon       = MONTH_NAMES[ev.date.getMonth()];
-    const upBadge   = isUpcoming ? '<span class="upcomingBadge">Upcoming</span>' : '';
+  function buildCard(ev, isPast) {
+    const meta  = CAT_META[ev.cat] || CAT_META.general;
+    const day   = ev.date.getDate().toString().padStart(2,'0');
+    const mon   = MONTH_NAMES[ev.date.getMonth()];
+    const badge = isPast
+      ? '<span class="upcomingBadge" style="background:#fee2e2;color:#dc2626;">Just Passed</span>'
+      : '<span class="upcomingBadge">Upcoming</span>';
+
     return `
-      <div class="eventCard${isUpcoming ? '' : ' past'}" data-cat="${ev.cat}">
-        <div class="eventCardAccent ${meta.accent}"></div>
+      <div class="eventCard${isPast ? ' past' : ''}"
+           data-cat="${ev.cat}"
+           data-past="${isPast ? '1' : '0'}"
+           style="${isPast ? 'display:none' : ''}">
+        <div class="eventCardAccent ${meta.accent}" ${isPast ? 'style="opacity:.4"' : ''}></div>
         <div class="eventCardTop">
-          <div class="eventDate"><div class="day">${day}</div><div class="mon">${mon}</div></div>
+          <div class="eventDate" ${isPast ? 'style="background:#94a3b8"' : ''}>
+            <div class="day">${day}</div>
+            <div class="mon">${mon}</div>
+          </div>
           <div class="eventInfo">
-            <span class="eventCat ${meta.tag}">${meta.label}</span>${upBadge}
-            <h4>${ev.title}</h4>
+            <span class="eventCat ${meta.tag}" ${isPast ? 'style="opacity:.6"' : ''}>${meta.label}</span>
+            ${badge}
+            <h4 ${isPast ? 'style="color:#94a3b8"' : ''}>${ev.title}</h4>
           </div>
         </div>
-        <div class="eventCardBody"><p>${ev.desc}</p></div>
+        <div class="eventCardBody">
+          <p ${isPast ? 'style="color:#94a3b8"' : ''}>${ev.desc}</p>
+        </div>
       </div>`;
   }
 
-  function filterEvents(cat, btn) {
-    document.querySelectorAll('.filterBtn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+  function applyFilters() {
     document.querySelectorAll('.eventCard').forEach(card => {
-      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+      const catMatch  = activeFilter === 'all' || card.dataset.cat === activeFilter;
+      const isPast    = card.dataset.past === '1';
+      const pastOk    = !isPast || showPast;
+      card.style.display = (catMatch && pastOk) ? 'flex' : 'none';
     });
+
+    // Update toggle button label
+    const btn = document.getElementById('togglePastBtn');
+    if (btn) btn.textContent = showPast ? '🙈 Hide Past Event' : '🕐 Show Last Past Event';
   }
 
-  // Load and render
+  function setFilter(cat, btn) {
+    activeFilter = cat;
+    document.querySelectorAll('.filterBtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function togglePast() {
+    showPast = !showPast;
+    applyFilters();
+  }
+
   fetch('events.txt')
     .then(r => {
       if (!r.ok) throw new Error('Could not load events.txt');
       return r.text();
     })
     .then(text => {
-      const events = parseEvents(text);
+      const all      = parseEvents(text);
+      const upcoming = all.filter(e => e.date >= TODAY);
+      const past     = all.filter(e => e.date <  TODAY);
+      const lastPast = past.length ? [past[past.length - 1]] : [];
+      const display  = [...lastPast, ...upcoming];
+
       const grid = document.getElementById('eventsGrid');
-      if (!events.length) {
-        grid.innerHTML = '<p style="color:var(--muted);padding:20px;">No events found.</p>';
+      if (!display.length) {
+        grid.innerHTML = '<p style="color:var(--muted);padding:20px;">No events to display.</p>';
         return;
       }
-      grid.innerHTML = events.map(buildCard).join('');
+      grid.innerHTML = display.map(ev => buildCard(ev, ev.date < TODAY)).join('');
 
-      // Update stats
-      const upcoming = events.filter(e => e.date >= TODAY).length;
-      const cats = new Set(events.map(e => e.cat)).size;
-      document.getElementById('statTotal').textContent    = events.length + '+';
-      document.getElementById('statUpcoming').textContent = upcoming;
-      document.getElementById('statCats').textContent     = cats;
+      // Stats
+      document.getElementById('statTotal').textContent    = all.length + '+';
+      document.getElementById('statUpcoming').textContent = upcoming.length;
+      document.getElementById('statCats').textContent     = new Set(all.map(e => e.cat)).size;
     })
     .catch(err => {
       document.getElementById('eventsGrid').innerHTML =
         `<p style="color:#dc2626;padding:20px;">⚠ ${err.message}</p>`;
     });
- </script>
+</script>
 </body>
 </html>
