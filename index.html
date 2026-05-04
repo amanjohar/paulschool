@@ -7,8 +7,6 @@
   <title>Paul International School | Lakhimpur Kheri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -114,7 +112,7 @@
   </section>
 
   <!-- ══ STATS BAR ══ -->
-  <div class="container">
+  <div class="container statsBarFloat">
     <div class="statsBar">
       <div class="statItem">
         <div class="num">20<span>+</span></div>
@@ -331,13 +329,17 @@
   </section>
 
   <!-- ══ CTA BANNER ══ -->
-  <section class="ctaBanner">
+  <section>
     <div class="container">
-      <h2>Begin Your Child's Journey With Us</h2>
-      <p>Admissions open for Session 2025–26. Give your child the foundation they deserve.</p>
-      <div class="ctaBtns">
-        <a class="btnWhite" href="contact.html">Apply for Admission</a>
-        <a class="btnGhostWhite" href="about.html">Learn More About Us</a>
+      <div class="ctaBanner">
+        <div>
+          <h2>Begin Your Child's Journey With Us</h2>
+          <p>Admissions open for Session 2025–26. Give your child the foundation they deserve.</p>
+        </div>
+        <div class="ctaBtns">
+          <a class="btnWhite" href="contact.html">Apply for Admission</a>
+          <a class="btnGhostWhite" href="about.html">Learn More About Us</a>
+        </div>
       </div>
     </div>
   </section>
@@ -390,159 +392,7 @@
     </div>
   </footer>
 
-  <!-- ══ NOTICE BOARD STYLES ══ -->
-  <style>
-    /* Hero two-column layout */
-    .heroInner {
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 56px 0;
-    }
-    /* Centered container holding both columns */
-    .heroInner > .container {
-      width: min(1140px, calc(100% - 40px));
-      margin: 0 auto;
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 16px 56px rgba(0,0,0,0.35);
-      position: relative;
-      z-index: 2;
-    }
-    /* Left: hero text */
-    .heroTextWrap {
-      flex: 1 1 auto;
-      display: flex;
-      align-items: center;
-      background: rgba(13,43,85,0.72);
-      backdrop-filter: blur(2px);
-      padding: 0;
-    }
-    .heroContent {
-      padding: 52px 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
 
-    /* Notice board panel */
-    .noticeBoard {
-      flex: 0 0 300px;
-      width: 300px;
-      background: rgba(255,255,255,0.97);
-      border-left: 4px solid var(--gold, #c9a84c);
-      display: flex;
-      flex-direction: column;
-      z-index: 3;
-      min-height: 420px;
-      max-height: 520px;
-    }
-    .noticeBoardHeader {
-      background: var(--navy, #1a2e5a);
-      color: #fff;
-      padding: 13px 16px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.4px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .noticeViewAll {
-      color: var(--gold, #c9a84c);
-      font-size: 0.75rem;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .noticeViewAll:hover { text-decoration: underline; }
-
-    .noticeBoardBody {
-      flex: 1;
-      overflow-y: auto;
-      scroll-behavior: smooth;
-    }
-    .noticeBoardBody::-webkit-scrollbar { width: 4px; }
-    .noticeBoardBody::-webkit-scrollbar-track { background: #f1f5f9; }
-    .noticeBoardBody::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-    /* Pinned admission notice */
-    .noticeItem.pinned {
-      background: linear-gradient(135deg, #fef9ec, #fef3c7);
-      border-left: 4px solid #f59e0b;
-      padding: 13px 14px;
-      border-bottom: 1px solid #fde68a;
-      animation: noticePulse 2.5s ease-in-out infinite;
-    }
-    @keyframes noticePulse {
-      0%,100% { background: linear-gradient(135deg,#fef9ec,#fef3c7); }
-      50%      { background: linear-gradient(135deg,#fef3c7,#fde68a); }
-    }
-    .pinnedBadge {
-      background: #f59e0b;
-      color: #fff;
-      font-size: 0.62rem;
-      padding: 2px 7px;
-      border-radius: 20px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-bottom: 4px;
-    }
-    .noticeItem.pinned .noticeTitle {
-      color: #92400e;
-      font-size: 0.85rem;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-    .noticeItem.pinned .noticeDesc { display: none; }
-
-    /* Regular notice items */
-    .noticeItem {
-      padding: 11px 14px;
-      border-bottom: 1px solid #e2e8f0;
-      transition: background 0.2s;
-    }
-    .noticeItem:hover { background: #f8fafc; }
-    .noticeMeta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 3px;
-    }
-    .noticeDate { font-size: 0.68rem; color: #94a3b8; font-weight: 500; }
-    .noticeCatBadge {
-      font-size: 0.62rem;
-      padding: 1px 6px;
-      border-radius: 20px;
-      font-weight: 600;
-      text-transform: capitalize;
-    }
-    .noticeTitle { font-size: 0.82rem; font-weight: 600; color: #1e293b; line-height: 1.4; }
-    .noticeDesc { display: none; }
-    .noticeLoading { padding: 20px; color: #94a3b8; font-size: 0.85rem; text-align: center; }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .heroInner { padding: 32px 0; }
-      .heroInner > .container { flex-direction: column; border-radius: 16px; }
-      .heroTextWrap { width: 100%; }
-      .heroContent { padding: 40px 28px; }
-      .noticeBoard {
-        flex: none;
-        width: 100%;
-        border-left: none;
-        border-top: 4px solid var(--gold, #c9a84c);
-        min-height: unset;
-        max-height: 280px;
-      }
-    }
-  </style>
 
   <!-- ══ NOTICE BOARD SCRIPT ══ -->
   <script>
