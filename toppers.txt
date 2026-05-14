@@ -1,10 +1,7 @@
-2026|Arjun Sharma|12|Science|98.4|arjun.jpg
-2026|Sanya Iyer|12|Commerce|97.8|sanya.jpg
-2026|Rahul Verma|12|Humanities|96.5|rahul.jpg
-2026|Priya Das|12|Science|96.2|priya.jpg
-2026|Anita Gill|10|General|99.2|anita.jpg
-2026|Karan Singh|10|General|98.5|karan.jpg
-2026|Zoya Khan|10|General|98.0|zoya.jpg
-2026|Manoj Kumar|10|General|97.6|manoj.jpg
+2026|Agyeya Tripathi|12|English|95|agyeya-tripathi.jpeg
+2026|Harshit Jaiswal|12|Chemistry|92|harshit-jaiswal.jpeg
+2026|Shubhranshu Raj|12|PhysEd|92|shubhranshu-raj.jpeg
+2026|Shivangi Gautam|12|English|93|shivangi-gautam.jpeg
+2026|Khushi Verma|12|PhysEd|90|khushi-verma.jpeg
 2025|Ishita Roy|12|Science|95.0|ishita.jpg
 2024|Deepak Jha|10|General|94.5|deepak.jpg
