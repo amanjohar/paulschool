@@ -3,6 +3,6 @@
 2026-03-15|academic|Annual Science Exhibition|Students from Classes VI–XII present innovative models and experiments. Open to parents and guests.  
 2026-03-20|sports|Annual Sports Meet|Inter-house track and field events, team sports and prize distribution.
 2025-04-01|general|New Session Starts|New Session for 2026-27 starts form 1'st April.
-2026-05-20|holiday|Summer Holiday's Start|Summer vications starts
-2026-06-30|holiday|Summer Holiday's Start|Summer vications ends
+2026-05-20|holiday|Summer Holiday's|Summer vications starts.
+2026-06-30|holiday|Summer Holiday's|Summer vications ends.
 2026-07-25|sports|Football Tournament|Annual inter-school football tournament hosted at our grounds.
