@@ -339,7 +339,19 @@ footer a:hover { color: var(--gold2); }
 .noticeItem { position: relative; cursor: pointer; padding: 11px 14px; border-bottom: 1px solid #e2e8f0; transition: background 0.2s; }
 .noticeItem:hover { background: #f8fafc; }
 .noticeMeta { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
-.noticeDate { display: none; }
+.noticeDate { 
+  display: inline-flex; 
+  background: #f1f5f9; 
+  color: #475569; 
+  font-size: 0.65rem; 
+  font-weight: 600; 
+  padding: 2px 7px; 
+  border-radius: 4px; 
+  text-transform: uppercase;
+  max-width: 42px;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .noticeCatBadge { font-size: 0.62rem; padding: 1px 6px; border-radius: 20px; font-weight: 600; text-transform: capitalize; }
 .noticeTitle { font-size: 0.82rem; font-weight: 600; color: #1e293b; line-height: 1.4; }
 .noticeLoading { padding: 20px; color: #94a3b8; font-size: 0.85rem; text-align: center; }
