@@ -343,17 +343,17 @@ footer a:hover { color: var(--gold2); }
   display: inline-flex; 
   background: #f1f5f9; 
   color: #475569; 
-  font-size: 0.65rem; 
+  font-size: 0.62rem; 
   font-weight: 600; 
-  padding: 2px 7px; 
-  border-radius: 4px; 
-  text-transform: uppercase;
-  max-width: 42px;
+  padding: 1px 6px; 
+  border-radius: 20px; 
+  text-transform: capitalize;
+  max-width: 320px;
   overflow: hidden;
   white-space: nowrap;
 }
-.noticeCatBadge { font-size: 0.62rem; padding: 1px 6px; border-radius: 20px; font-weight: 600; text-transform: capitalize; }
-.noticeTitle { font-size: 0.82rem; font-weight: 600; color: #1e293b; line-height: 1.4; }
+.noticeCatBadge { font-size: 0.62rem; padding: 1px 6px; border-radius: 20px; font-weight: 600; text-transform: capitalize; max-width: 320px; }
+.noticeTitle { font-size: 0.82rem; padding: 1px 6px; font-weight: 600; color: #1e293b; line-height: 1.4; }
 .noticeLoading { padding: 20px; color: #94a3b8; font-size: 0.85rem; text-align: center; }
 
 /* The Description Box (Tooltip Style) */
@@ -395,7 +395,7 @@ footer a:hover { color: var(--gold2); }
 .noticeItem.pinned .noticeHoverDesc::before { border-color: transparent transparent var(--navy) transparent; }
 
 /* For the last two items, show the tooltip ABOVE the title */
-.noticeItem:nth-last-child(-n+1) .noticeHoverDesc {
+.noticeItem:nth-last-child(-n+2) .noticeHoverDesc {
     top: auto;
     bottom: 100%; /* Positions it above the notice item */
     margin-top: 0;
