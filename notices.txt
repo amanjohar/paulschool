@@ -4,6 +4,6 @@ ADMISSION_OPEN|Admissions Open 2026–27|Enrol now for the new academic session.
 2026-05-10|general|Fee Reminder|Last date for submission of April–June term fee is 15th May 2026. Kindly clear dues to avoid late charges.
 2026-05-13|holiday|Summer Vacation|School will remain closed from 20th May to 30th June 2026 for summer vacations. Classes resume 1st July.  
 2026-05-14|general|PTM Notice|Parent-Teacher Meeting scheduled for 18th May 2026. All parents are requested to attend between 9:00 AM – 1:00 PM.
-2026-06-22|general|School Reopens|Regular classes will officially resume for Classes 9 to 12 on 22nd June following the summer break.
-2026-07-01|general|School Reopens|Regular classes will officially resume for all students on 1st July following the summer break.
+2026-06-22|general|9 to 12 - Classes Resume|Regular classes will officially resume for Classes 9 to 12 on 22nd June following the summer break.
+2026-07-01|general|PG to 8 - Classes Resume|Regular classes will officially resume for all students on 1st July following the summer break.
 
